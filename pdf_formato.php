@@ -81,9 +81,11 @@
             </td>
 
             <td class="center">
+                <p>
 <?php
                     print $hoy
 ?>
+                </p>
             </td>
         </tr>
 
@@ -142,10 +144,11 @@
 
         <tr>
             <td class="tg-us36" colspan="13">
-                <h5>PADRE O MADRE:</h5>
+                <h5>PADRE O MADRE:
 <?php
                     print "$apoderado";
 ?>
+                </h5>
             </td>
         </tr>
 
@@ -156,22 +159,25 @@
         </tr>
 
         <tr>
-            <td class="tg-us36"><h5>PRODUCTO: [  X  ]</h5></td>
-            <td class="tg-us36" colspan="12" rowspan="2">
-                <h5>DESCRIPCION:</h5>
-<?php
-                    print "$detalle_desperfecto";
-?>
-            </td>
+            <td class="tg-us36" colspan="13"><h5>PRODUCTO: [  X  ]</h5></td>
         </tr>
 
         <tr>
-            <td class="tg-us36">
+            <td class="tg-us36" colspan="13">
                 <h5>MONTO RECLAMADO:
 <?php
                 print "S/. $monto_recl.00";
 ?>
                 </h5>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="tg-us36" colspan="13">
+                <h5>DESCRIPCION:</h5>
+<?php
+                    print "$des_producto";
+?>
             </td>
         </tr>
 
@@ -212,11 +218,10 @@
 
         <tr>
             <td class="tg-us36" colspan="13">
-                <h5>DETALLE
+                <h5>DETALLE</h5>
 <?php
                     print "$detalle_desperfecto";
 ?>
-                </h5>
             </td>
         </tr>
 
