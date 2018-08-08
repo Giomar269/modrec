@@ -46,8 +46,8 @@
         .tg .tg-yw4l{vertical-align:top}
 
         h1, h2, h3, h4, h5 {
-            padding: 0px;
-            margin: 0px;
+            padding: 4px;
+            margin: 4px;
         }
 
         .center {
@@ -56,54 +56,96 @@
             padding: 2px;
         }
 
+        .oculto {
+            display: none;
+        }
+
         body {
             font-family: Arial;
+            width: 100%
         }
+
+        .hideme {
+            height: 1px; border: none
+        }
+        .noborder{border: none}
+        .offscreen {height: 0px; width: 0px; position: absolute; overflow: hidden; top: -20px; }
     </style>
 </head>
 
 <body>
     <nobreak>
     <table class="tg">
+        <tr class="hideme">
+            <th class="center noborder" width="10%"><span class="offscreen">upgrade</span></th>
+            <th class="center noborder" width="10%"><span class="offscreen">upgrade</span></th>
+            <th class="center noborder" width="10%"><span class="offscreen">upgrade</span></th>
+            <th class="center noborder" width="10%"><span class="offscreen">upgrade</span></th>
+            <th class="center noborder" width="10%"><span class="offscreen">upgrade</span></th>
+            <th class="center noborder" width="10%"><span class="offscreen">upgrade</span></th>
+            <th class="center noborder" width="10%"><span class="offscreen">upgrade</span></th>
+            <th class="center noborder" width="10%"><span class="offscreen">upgrade</span></th>
+            <th class="center noborder" width="10%"><span class="offscreen">upgrade</span></th>
+            <th class="center noborder" width="10%"><span class="offscreen">upgrade</span></th>
+        </tr>
+
         <tr>
-            <th class="tg-us36 center" colspan="2"><h5>LIBRO DE RECLAMACIONES</h5></th>
-            <th class="tg-us36 center" colspan="11" rowspan="2">
-                <h5>HOJA DE RECLAMACION</h5>
-                <p>Reclamacion: xxx</p>
-            </th>
+            <td class="tg-us36 titulo center" colspan="4">
+                <h5>LIBRO DE RECLAMACIONES</h5>
+            </td>
+
+            <td class="tg-us36 center" colspan="6" rowspan="2">
+                <h3>HOJA DE RECLAMACION</h3>
+                Reclamacion: xxx
+            </td>
         </tr>
 <?php
             $hoy = date("Y-m-d");
+            $ahora= time();
+            $anno = date("Y",$ahora);
+            $mes = date("m",$ahora);
+            $dia = date("d",$ahora);
 ?>
         <tr>
             <td class="tg-us36">
                 <h5>FECHA:</h5>
             </td>
 
-            <td class="center">
-                <p>
+            <td class="tg-us36">
 <?php
-                    print $hoy
+                    print $anno;
 ?>
-                </p>
+            </td>
+
+            <td class="tg-us36">
+<?php
+                    print $mes;
+?>
+            </td>
+
+            <td class="tg-us36">
+<?php
+                    print $dia;
+?>
             </td>
         </tr>
 
         <tr>
-            <td class="tg-us36 center" colspan="13">
+            <td class="tg-us36 center" colspan="10">
+                <br>
                 <h4>GRUPO UPGRADE S.A.C. RUC 20454043660</h4>
-                <p>GRUPO UPGRADE Dir: Urb. Magisterial II B-4 Umacollo, <br> Yanahuara - Arequipa</p>
+                <p>GRUPO UPGRADE Dir: Urb. Magisterial II B-4 Umacollo, Yanahuara - Arequipa</p><br>
             </td>
         </tr>
 
         <tr>
-            <td class="tg-us36 titulo" colspan="13">
+            <td class="tg-us36 titulo" colspan="10">
                 <h5>1. IDENTIFICACION DEL CONDUMIDOR RECLAMANTE</h5>
             </td>
         </tr>
 
         <tr>
-            <td class="tg-us36" colspan="13">
+            <td class="tg-us36" colspan="10">
                 <h5>NOMBRE:
 <?php
                     print "$nombre $apellidos";
@@ -113,7 +155,7 @@
         </tr>
 
         <tr>
-            <td class="tg-us36" colspan="13">
+            <td class="tg-us36" colspan="10">
                 <h5>DOMICILIO:
 <?php
                     print "$departamento/$provincia/$distrito - $direccion";
@@ -123,7 +165,7 @@
         </tr>
 
         <tr>
-            <td class="tg-us36" colspan="13">
+            <td class="tg-us36" colspan="10">
                 <h5>DNI/CE:
 <?php
                     print "$documento";
@@ -133,7 +175,7 @@
         </tr>
 
         <tr>
-            <td class="tg-us36" colspan="13">
+            <td class="tg-us36" colspan="10">
                 <h5>TELEFONO/EMAIL:
 <?php
                     print "$telefono / $email";
@@ -143,8 +185,8 @@
         </tr>
 
         <tr>
-            <td class="tg-us36" colspan="13">
-                <h5>PADRE O MADRE:
+            <td class="tg-us36" colspan="10">
+                <h5>APODERADO:
 <?php
                     print "$apoderado";
 ?>
@@ -153,18 +195,17 @@
         </tr>
 
         <tr>
-            <td class="tg-us36 titulo" colspan="13">
+            <td class="tg-us36 titulo" colspan="10">
                 <h5>2. IDENTIFICACION DEL BIEN CONTRATADO</h5>
             </td>
         </tr>
 
         <tr>
-            <td class="tg-us36" colspan="13"><h5>PRODUCTO: [  X  ]</h5></td>
-        </tr>
-
-        <tr>
-            <td class="tg-us36" colspan="13">
-                <h5>MONTO RECLAMADO:
+            <td class="tg-us36" colspan="1"><h5>PRODUCTO:</h5></td>
+            <td class="tg-us36" colspan="1"><h5>X</h5></td>
+            <td class="tg-us36" colspan="3"><h5>MONTO RECLAMADO:</h5></td>
+            <td class="tg-us36" colspan="6">
+                <h5>
 <?php
                 print "S/. $monto_recl.00";
 ?>
@@ -173,7 +214,7 @@
         </tr>
 
         <tr>
-            <td class="tg-us36" colspan="13">
+            <td class="tg-us36" colspan="10">
                 <h5>DESCRIPCION:</h5>
 <?php
                     print "$des_producto";
@@ -182,21 +223,25 @@
         </tr>
 
         <tr>
-            <td class="tg-us36 titulo" colspan="13">
+            <td class="tg-us36 titulo" colspan="10">
                 <h5>3. DETALLE DE LA RECLAMACION Y PEDIDO DEL CONSUMIDOR</h5>
             </td>
         </tr>
+
         <tr>
             <td class="tg-us36">
-                <h5>RECLAMO:
+                <h5>RECLAMO:</h5>
+            </td>
+
+            <td class="tg-us36">
 <?php
                     if (strcmp($type_reclamo, "reclamo") == 0) {
-                      print "[  X  ]";
+                      print "  X  ";
                     }
 ?>
-                </h5>
             </td>
-            <td class="tg-us36" colspan="12" rowspan="2">
+
+            <td class="tg-us36" colspan="8" rowspan="2">
                 <h5>PEDIDO:</h5>
 <?php
                     print "$pedido_reclamo";
@@ -206,18 +251,20 @@
 
         <tr>
             <td class="tg-us36">
-                <h5>QUEJA:
+                <h5>QUEJA:</h5>
+            </td>
+
+            <td class="tg-us36">
 <?php
-                    if (strcmp($type_reclamo, "queja") == 0) {
-                      print "[  X  ]";
-                    }
+                if (strcmp($type_reclamo, "queja") == 0) {
+                  print "[  X  ]";
+                }
 ?>
-                </h5>
             </td>
         </tr>
 
         <tr>
-            <td class="tg-us36" colspan="13">
+            <td class="tg-us36" colspan="10">
                 <h5>DETALLE</h5>
 <?php
                     print "$detalle_desperfecto";
@@ -226,41 +273,35 @@
         </tr>
 
         <tr>
-            <td class="tg-yw4l titulo" colspan="13">
+            <td class="tg-us36 titulo" colspan="10">
                 <h5>4. OBSERVACIONES Y ACCIONES ADOPTADAS POR EL PROVEEDOR</h5>
             </td>
         </tr>
 
         <tr>
-            <td class="tg-yw4l" colspan="12">
+            <td class="tg-us36" colspan="7">
                 <h5>FECHA DE COMUNICACION DE LA RESPUESTA:</h5>
             </td>
-            <td class="tg-yw4l" colspan="1"></td>
+            <td class="tg-us36" colspan="3"></td>
         </tr>
 
         <tr>
-            <td class="tg-yw4l" colspan="13">
+            <td class="tg-us36" colspan="10">
                 <h5>OBSERVACION:</h5>
             </td>
         </tr>
 
         <tr>
-            <td class="tg-yw4l" colspan="13">
+            <td class="tg-us36" colspan="10">
                 <h5>RECLAMO:</h5>
-<?php
-                print wordwrap("Disconformidad relacionada a los productos o servicios.", 90, "<br>", TRUE);
-?>
-
+                Disconformidad relacionada a los productos o servicios.
             </td>
-
         </tr>
 
         <tr>
-            <td class="tg-yw4l" colspan="13">
+            <td class="tg-us36" colspan="10">
                 <h5>QUEJA:</h5>
-<?php
-                print wordwrap("Disconformidad no relacionada a los productos o servicios; o malestar o descontento respecto a la atencion al publico.", 90, "<br>", TRUE);
-?>
+                Disconformidad no relacionada a los productos o servicios; o malestar o descontento respecto a la atencion al publico.
             </td>
         </tr>
 

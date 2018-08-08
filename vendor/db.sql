@@ -9,8 +9,8 @@ CREATE TABLE IF NOT EXISTS usuario (
     nombres VARCHAR(30) NOT NULL,
     apellidos VARCHAR(30) NOT NULL,
     sexo VARCHAR(2) NOT NULL,
-    telefono VARCHAR(15) NOT NULL,
-    email VARCHAR(50) NOT NULL,
+    telefono VARCHAR(15) NOT NULL
+ ,   email VARCHAR(50) NOT NULL,
     fecha_nac DATE NOT NULL,
     apoderado VARCHAR(100) NOT NULL,
     departamento VARCHAR(50) NOT NULL,

@@ -48,7 +48,7 @@
                 </span>
 
                 <span class="contact100-form-subtitle">
-                    Datos Personales
+                    Identificación del Consumidor Reclamante
                 </span>
 
                 <div class="wrap-input100 input100-select bg1">
@@ -99,13 +99,8 @@
                     <input class="input100" type="text" name="email" placeholder="Ingrese su correo">
                 </div>
 
-                <div class="wrap-input100 bg1 rs1-wrap-input100" data-validate = "Ingrese una fecha valida">
-                    <span class="label-input100">Fecha de Nacimiento *</span>
-                    <input class="input100" type="date" name="fecha_nac" placeholder="Ingrese su correo">
-                </div>
-
                 <div class="wrap-input100 bg1">
-                    <span class="label-input100">APODERADO</span>
+                    <span class="label-input100">APODERADO (Si es que fuera menor de edad)</span>
                     <input class="input100" type="text" name="apoderado" placeholder="Ingresa tus apellidos">
                 </div>
 
@@ -145,28 +140,7 @@
                 </span>
 
                 <span class="contact100-form-subtitle">
-                    Datos del Reclamo
-                </span>
-
-                <div class="wrap-contact100-form-radio">
-                    <span class="label-input100">Tipo</span>
-
-                    <div class="contact100-form-radio m-t-15">
-                        <input class="input-radio100" id="radio1" type="radio" name="type_reclamo" value="reclamo" checked="checked">
-                        <label class="label-radio100" for="radio1">
-                            Reclamo
-                        </label>
-                    </div>
-
-                    <div class="contact100-form-radio">
-                        <input class="input-radio100" id="radio2" type="radio" name="type_reclamo" value="queja">
-                        <label class="label-radio100" for="radio2">
-                            Queja
-                        </label>
-                    </div>
-                </div>
-
-                <span class="contact100-form-title">
+                    Identificación del Bien Adquirido
                 </span>
 
                 <div class="wrap-input100 validate-input bg1" data-validate="Este campo es obligatorio">
@@ -189,6 +163,31 @@
                     <textarea class="input100" name="des_producto" placeholder="Ingrese los detalles aqui"></textarea>
                 </div>
 
+                <span class="contact100-form-subtitle">
+                </span>
+
+                <span class="contact100-form-subtitle">
+                    Detalle de la reclamación y pedido del consumidor
+                </span>
+
+                <div class="wrap-contact100-form-radio">
+                    <span class="label-input100">Tipo</span>
+
+                    <div class="contact100-form-radio m-t-15">
+                        <input class="input-radio100" id="radio1" type="radio" name="type_reclamo" value="reclamo" checked="checked">
+                        <label class="label-radio100" for="radio1">
+                            RECLAMO: Disconformidad relacionada a los productos o servicios.
+                        </label>
+                    </div>
+
+                    <div class="contact100-form-radio">
+                        <input class="input-radio100" id="radio2" type="radio" name="type_reclamo" value="queja">
+                        <label class="label-radio100" for="radio2">
+                            QUEJA: Disconformidad no relacionada a los productos o servicios o malestar o descontento respecto a la atención al público. La formulación del reclamo no impide acudir a otras vías de solución de controversias ni es requisito previo para interponer una denuncia ante el INDECOPI.
+                        </label>
+                    </div>
+                </div>
+
                 <div class="wrap-input100 validate-input bg0 rs1-alert-validate" data-validate = "Este campo es obligatorio">
                     <span class="label-input100">Detalle del desperfecto</span>
                     <textarea class="input100" name="detalle_desperfecto" placeholder="Ingrese los detalles aqui"></textarea>
@@ -204,14 +203,13 @@
                     <input class="input100" type="number" name="monto_recl" placeholder="Ingrese el monto reclamado">
                 </div>
 
-                <div>
-                    <input type="checkbox" name="cb-autos" value="imprimir"> Imprimir<br>
-                    <input type="checkbox" name="cb-deportes" value="copia"> Enviar Copia a mi Correo<br>
+                <div class="wrap-input100">
+                    <input type="checkbox" name="cb-autos" value="imprimir"> Aviso Legal: Doy conformidad a todos los datos consignados en mi reclamo/queja. El hacer click en el boton "Registrar", sustituye a mi firma manuscrita, con igual validez, conforme al articulo 141 y 141-A del Codigo Civil.
                 </div>
 
                 <span class="contact100-form-title">
                 </span>
-                <p>Aviso Legal: Doy conformidad a todos los datos consignados en mi reclamo/queja. El hacer click en el boton "Registrar", sustituye a mi firma manuscrita, con igual validez, conforme al articulo 141 y 141-A del Codigo Civil.</p>
+
                 <div class="container-contact100-form-btn">
                     <button name="submit" class="contact100-form-btn">
                         <span>
