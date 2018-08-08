@@ -46,12 +46,13 @@
         .tg .tg-yw4l{vertical-align:top}
 
         h1, h2, h3, h4, h5 {
-            padding: 4px;
-            margin: 4px;
+            padding: 1px;
+            margin: 1px;
         }
 
         .center {
             text-align: center;
+            vertical-align: middle;
             margin: 2px;
             padding: 2px;
         }
@@ -133,8 +134,9 @@
         <tr>
             <td class="tg-us36 center" colspan="10">
                 <br>
-                <h4>GRUPO UPGRADE S.A.C. RUC 20454043660</h4>
-                <p>GRUPO UPGRADE Dir: Urb. Magisterial II B-4 Umacollo, Yanahuara - Arequipa</p><br>
+                <h4 class="center">GRUPO UPGRADE S.A.C. RUC 20454043660</h4>
+                <p>GRUPO UPGRADE Dir: Urb. Magisterial II B-4 Umacollo, Yanahuara - Arequipa</p>
+                <br>
             </td>
         </tr>
 
@@ -202,7 +204,7 @@
 
         <tr>
             <td class="tg-us36" colspan="1"><h5>PRODUCTO:</h5></td>
-            <td class="tg-us36" colspan="1"><h5>X</h5></td>
+            <td class="tg-us36 center" colspan="1"><h5>X</h5></td>
             <td class="tg-us36" colspan="3"><h5>MONTO RECLAMADO:</h5></td>
             <td class="tg-us36" colspan="6">
                 <h5>
@@ -234,11 +236,13 @@
             </td>
 
             <td class="tg-us36">
+                <h5 class="center">
 <?php
                     if (strcmp($type_reclamo, "reclamo") == 0) {
                       print "  X  ";
                     }
 ?>
+                </h5>
             </td>
 
             <td class="tg-us36" colspan="8" rowspan="2">
