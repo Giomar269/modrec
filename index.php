@@ -5,16 +5,34 @@
 
     use Spipu\Html2Pdf\Html2Pdf;
 
-    if(isset($_POST['submit']))
+    function sendEmail()
+    {
+        require_once 'pdf_mailer.php';
+
+        try
+        {
+            enviar_correo('john.mestas.t@gmail.com', 'John', 'File');
+        }
+        catch (Exception $e) {
+            echo 'Mailer Error';
+        }
+    }
+
+    function generarPdf()
     {
         ob_start();
         require_once 'pdf_generador.php';
         $html = ob_get_clean();
 
         $html2pdf = new Html2Pdf('P', 'A4', 'es', 'true', 'UTF-8');
-        // $html2pdf -> html2pdf -> SetDisplayMode('fullpage');
         $html2pdf->writeHTML($html);
         $html2pdf->output('Reclamo.pdf');
+    }
+
+    if(isset($_POST['submit']))
+    {
+        generarPdf();
+        sendEmail();
     }
 
 ?>
