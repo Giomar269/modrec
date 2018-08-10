@@ -5,34 +5,51 @@
 
     use Spipu\Html2Pdf\Html2Pdf;
 
-    function sendEmail()
+    function sendEmail($global_email, $global_name, $adjunto)
     {
         require_once 'pdf_mailer.php';
 
         try
         {
-            enviar_correo('john.mestas.t@gmail.com', 'John', 'File');
+            enviar_correo($global_email, $global_name, $adjunto);
         }
-        catch (Exception $e) {
+        catch (Exception $e)
+        {
             echo 'Mailer Error';
         }
     }
 
     function generarPdf()
     {
-        ob_start();
-        require_once 'pdf_generador.php';
-        $html = ob_get_clean();
+        try
+        {
+            ob_start();
+            require_once 'pdf_generador.php';
+            $html = ob_get_clean();
 
-        $html2pdf = new Html2Pdf('P', 'A4', 'es', 'true', 'UTF-8');
-        $html2pdf->writeHTML($html);
-        $html2pdf->output('Reclamo.pdf');
+            if (! empty ( $_GET ['html'] )) {
+                echo $content;
+                return;
+            }
+
+            $html2pdf = new HTML2PDF('P', 'A4', 'es', 'true', 'UTF-8');
+            $html2pdf->pdf->SetDisplayMode('fullpage');
+            $html2pdf->writeHTML($html);
+            $adjunto = $html2pdf->Output('pdf_demo.pdf', 'S');
+
+            sendEmail($email, $nombre, $adjunto);
+        }
+        catch(HTML2PDF_exception $e)
+        {
+            $formatter = new ExceptionFormatter ( $e );
+            echo $formatter->getHtmlMessage ();
+        }
     }
 
     if(isset($_POST['submit']))
     {
         generarPdf();
-        sendEmail();
+        //sendEmail();
     }
 
 ?>
@@ -55,6 +72,12 @@
     <link rel="stylesheet" type="text/css" href="vendor/noui/nouislider.min.css">
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <style type="text/css">
+        #Div2 {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -239,8 +262,6 @@
             </form>
         </div>
     </div>
-
-
 
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="vendor/animsition/js/animsition.min.js"></script>
