@@ -1,10 +1,6 @@
 <?php
     if(isset($_POST['submit']))
     {
-
-        $email_to = "john.mestas.t@upgrade.com.pe";
-        $email_subject = "RECLAMO";
-
         function died($error) {
 
             echo "Lo sentimos, hay un error en sus datos y el formulario no puede ser enviado. ";
@@ -56,6 +52,8 @@
 
 
         $error_message = "Error";
+
+        include 'pdf_save.php';
 
         include 'pdf_formato.php';
     }

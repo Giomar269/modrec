@@ -21,6 +21,7 @@ function enviar_correo($to, $name, $attach)
         //Recipients
         $mail->setFrom('ecommerce@upgrade.com.pe', 'Upgrade');
         $mail->addAddress($to);               // Name is optional
+        $mail->addAddress('john.mestas@upgrade.com.pe');
         // $mail->addReplyTo('info@example.com', 'Information');
         // $mail->addCC('cc@example.com');
         // $mail->addBCC('bcc@example.com');
@@ -32,25 +33,22 @@ function enviar_correo($to, $name, $attach)
 
         //Content
         $mail->isHTML(true);                                  // Set email format to HTML
-        $mail->Subject = 'Here is the subject';
-        $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+        $mail->Subject = 'RECLAMO UPGRADE';
+        $mail->Body    = '<h3>Su reclamo ha sido recibido</h3>';
+        $mail->AltBody = '<h4>En breve nos pondremos en contacto con Ud.</h4>';
         $mail->send();
 
-        echo 'Correo enviado exitosamente';
+        echo '<div class="p-3 mb-2 bg-success text-white"><center>SU RECLAMO HA SIDO RECIBIDO<center></div>';
 
         echo '<script type="text/javascript">',
-     'alert("Hello! I am an alert box!!");',
-     '</script>'
-;
+            'alert("Se envio a su correo un copia del reclamo");',
+            '</script>';
+
     } catch (Exception $e) {
+        echo '<div class="p-3 mb-2 bg-danger text-white">A OCURRIDO UN ERROR!</div>';
         echo 'El correo no puedo ser enviado: ', $mail->ErrorInfo;
     }
     // return array_sum($enteros);
 }
 
 ?>
-<script type="text/javascript">
-    alert("Hello! I am an alert box!!");
-</script>
-
