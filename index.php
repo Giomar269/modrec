@@ -1,38 +1,55 @@
 <?php
+    //error_reporting(E_ALL);
     error_reporting(0);
 
     require __DIR__.'/vendor/autoload.php';
 
     use Spipu\Html2Pdf\Html2Pdf;
 
-    function sendEmail()
+    function sendEmail($global_email, $global_name, $adjunto)
     {
         require_once 'pdf_mailer.php';
 
         try
         {
-            enviar_correo('john.mestas.t@gmail.com', 'John', 'File');
+            enviar_correo($global_email, $global_name, $adjunto);
         }
-        catch (Exception $e) {
+        catch (Exception $e)
+        {
             echo 'Mailer Error';
         }
     }
 
     function generarPdf()
     {
-        ob_start();
-        require_once 'pdf_generador.php';
-        $html = ob_get_clean();
+        try
+        {
+            ob_start();
+            require_once 'pdf_generador.php';
+            $html = ob_get_clean();
 
-        $html2pdf = new Html2Pdf('P', 'A4', 'es', 'true', 'UTF-8');
-        $html2pdf->writeHTML($html);
-        $html2pdf->output('Reclamo.pdf');
+            if (! empty ( $_GET ['html'] )) {
+                echo $content;
+                return;
+            }
+
+            $html2pdf = new HTML2PDF('P', 'A4', 'es', 'true', 'UTF-8');
+            $html2pdf->pdf->SetDisplayMode('fullpage');
+            $html2pdf->writeHTML($html);
+            $adjunto = $html2pdf->Output('pdf_demo.pdf', 'S');
+
+            sendEmail($email, $nombre, $adjunto);
+        }
+        catch(HTML2PDF_exception $e)
+        {
+            $formatter = new ExceptionFormatter ( $e );
+            echo $formatter->getHtmlMessage ();
+        }
     }
 
     if(isset($_POST['submit']))
     {
         generarPdf();
-        sendEmail();
     }
 
 ?>
@@ -44,15 +61,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" type="text/css" href="vendor/noui/nouislider.min.css">
+    <link rel="stylesheet" type="text/css" href="tools/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="tools/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="tools/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="tools/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="tools/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="tools/noui/nouislider.min.css">
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
@@ -151,7 +168,7 @@
 
                 <div class="wrap-input100 validate-input bg1" data-validate="Por favor ingrese alguna referencia">
                     <span class="label-input100">REFERENCIA *</span>
-                    <input class="input100" type="text" name="referencia" placeholder="Ingresa algura referencia">
+                    <input class="input100" type="text" name="referencia" maxlength="200" placeholder="Ingresa algura referencia">
                 </div>
 
                 <span class="contact100-form-title">
@@ -178,7 +195,7 @@
 
                 <div class="wrap-input100 validate-input bg0 rs1-alert-validate" data-validate = "Este campo es obligatorio">
                     <span class="label-input100">Descripcion del producto</span>
-                    <textarea class="input100" name="des_producto" placeholder="Ingrese los detalles aqui"></textarea>
+                    <textarea class="input100" name="des_producto" maxlength="500" placeholder="Ingrese los detalles aqui"></textarea>
                 </div>
 
                 <span class="contact100-form-subtitle">
@@ -208,28 +225,28 @@
 
                 <div class="wrap-input100 validate-input bg0 rs1-alert-validate" data-validate = "Este campo es obligatorio">
                     <span class="label-input100">Detalle del desperfecto</span>
-                    <textarea class="input100" name="detalle_desperfecto" placeholder="Ingrese los detalles aqui"></textarea>
+                    <textarea class="input100" name="detalle_desperfecto" placeholder="Ingrese los detalles aqui" maxlength="500"></textarea>
                 </div>
 
                 <div class="wrap-input100 validate-input bg0 rs1-alert-validate" data-validate = "Este campo es obligatorio">
                     <span class="label-input100">Pedido</span>
-                    <textarea class="input100" name="pedido_reclamo" placeholder="Espesifique que podemos hacer para remediarlo."></textarea>
+                    <textarea class="input100" name="pedido_reclamo" maxlength="500"placeholder="Espesifique que podemos hacer para remediarlo."></textarea>
                 </div>
 
-                <div class="wrap-input100 validate-input bg1" data-validate="Este campo es obligatorio">
-                    <span class="label-input100">MONTO RECLAMADO *</span>
+                <div class="wrap-input100 bg1">
+                    <span class="label-input100">MONTO RECLAMADO</span>
                     <input class="input100" type="number" name="monto_recl" placeholder="Ingrese el monto reclamado">
                 </div>
 
                 <div class="wrap-input100">
-                    <input type="checkbox" name="cb-autos" value="imprimir"> Aviso Legal: Doy conformidad a todos los datos consignados en mi reclamo/queja. El hacer click en el boton "Registrar", sustituye a mi firma manuscrita, con igual validez, conforme al articulo 141 y 141-A del Codigo Civil.
+                    <input type="checkbox" id="tyc" onchange="isChecked(this, 'envReclamo')"> Aviso Legal: Doy conformidad a todos los datos consignados en mi reclamo/queja. El hacer click en el boton "Registrar", sustituye a mi firma manuscrita, con igual validez, conforme al articulo 141 y 141-A del Codigo Civil.
                 </div>
 
                 <span class="contact100-form-title">
                 </span>
 
                 <div class="container-contact100-form-btn">
-                    <button name="submit" class="contact100-form-btn">
+                    <button name="submit" id="envReclamo" class="contact100-form-btn" >
                         <span>
                             ENVIAR
                             <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
@@ -240,14 +257,17 @@
         </div>
     </div>
 
+    <script src="tools/jquery/jquery-3.2.1.min.js"></script>
+    <script src="tools/animsition/js/animsition.min.js"></script>
+    <script src="tools/bootstrap/js/popper.js"></script>
+    <script src="tools/bootstrap/js/bootstrap.min.js"></script>
+    <script src="tools/select2/select2.min.js"></script>
 
-
-    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-    <script src="vendor/animsition/js/animsition.min.js"></script>
-    <script src="vendor/bootstrap/js/popper.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="vendor/select2/select2.min.js"></script>
-
+    <script>
+        function isChecked(checkbox, envReclamo) {
+            document.getElementById(envReclamo).disabled = !checkbox.checked;
+        }
+    </script>
 
     <script>
         $(".js-select2").each(function(){
@@ -255,28 +275,13 @@
                 minimumResultsForSearch: 20,
                 dropdownParent: $(this).next('.dropDownSelect2')
             });
-
-            $(".tipo_reclamo").each(function(){
-                $(this).on('select2:close', function (e){
-                    if($(this).val() == "Reclamo") {
-                        $('.js-show-service').slideUp();
-                    } else if ($(this).val() == "Queja"){
-                        $('.js-show-service').slideUp();
-                        $('.js-show-service').slideDown();
-                    }
-                    else {
-                        $('.js-show-service').slideUp();
-                        $('.js-show-service').slideDown();
-                    }
-                });
-            });
         })
     </script>
 
-    <script src="vendor/daterangepicker/moment.min.js"></script>
-    <script src="vendor/daterangepicker/daterangepicker.js"></script>
-    <script src="vendor/countdowntime/countdowntime.js"></script>
-    <script src="vendor/noui/nouislider.min.js"></script>
+    <script src="tools/daterangepicker/moment.min.js"></script>
+    <script src="tools/daterangepicker/daterangepicker.js"></script>
+    <script src="tools/countdowntime/countdowntime.js"></script>
+    <script src="tools/noui/nouislider.min.js"></script>
     <script>
         var filterBar = document.getElementById('filter-bar');
 
