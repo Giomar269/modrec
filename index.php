@@ -1,4 +1,5 @@
 <?php
+    //error_reporting(E_ALL);
     error_reporting(0);
 
     require __DIR__.'/vendor/autoload.php';
@@ -167,7 +168,7 @@
 
                 <div class="wrap-input100 validate-input bg1" data-validate="Por favor ingrese alguna referencia">
                     <span class="label-input100">REFERENCIA *</span>
-                    <input class="input100" type="text" name="referencia" placeholder="Ingresa algura referencia">
+                    <input class="input100" type="text" name="referencia" maxlength="200" placeholder="Ingresa algura referencia">
                 </div>
 
                 <span class="contact100-form-title">
@@ -194,7 +195,7 @@
 
                 <div class="wrap-input100 validate-input bg0 rs1-alert-validate" data-validate = "Este campo es obligatorio">
                     <span class="label-input100">Descripcion del producto</span>
-                    <textarea class="input100" name="des_producto" placeholder="Ingrese los detalles aqui"></textarea>
+                    <textarea class="input100" name="des_producto" maxlength="500" placeholder="Ingrese los detalles aqui"></textarea>
                 </div>
 
                 <span class="contact100-form-subtitle">
@@ -224,16 +225,16 @@
 
                 <div class="wrap-input100 validate-input bg0 rs1-alert-validate" data-validate = "Este campo es obligatorio">
                     <span class="label-input100">Detalle del desperfecto</span>
-                    <textarea class="input100" name="detalle_desperfecto" placeholder="Ingrese los detalles aqui"></textarea>
+                    <textarea class="input100" name="detalle_desperfecto" placeholder="Ingrese los detalles aqui" maxlength="500"></textarea>
                 </div>
 
                 <div class="wrap-input100 validate-input bg0 rs1-alert-validate" data-validate = "Este campo es obligatorio">
                     <span class="label-input100">Pedido</span>
-                    <textarea class="input100" name="pedido_reclamo" placeholder="Espesifique que podemos hacer para remediarlo."></textarea>
+                    <textarea class="input100" name="pedido_reclamo" maxlength="500"placeholder="Espesifique que podemos hacer para remediarlo."></textarea>
                 </div>
 
-                <div class="wrap-input100 validate-input bg1" data-validate="Este campo es obligatorio">
-                    <span class="label-input100">MONTO RECLAMADO *</span>
+                <div class="wrap-input100 bg1">
+                    <span class="label-input100">MONTO RECLAMADO</span>
                     <input class="input100" type="number" name="monto_recl" placeholder="Ingrese el monto reclamado">
                 </div>
 

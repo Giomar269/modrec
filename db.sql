@@ -7,8 +7,6 @@ BEGIN
 END
 
 
-
-
 DELIMITER $$
 CREATE FUNCTION max_reclamo() RETURNS INT
     DETERMINISTIC
@@ -28,7 +26,7 @@ CREATE TABLE IF NOT EXISTS reclamos(
     sexo_cliente VARCHAR(2) NOT NULL,
     telefono_cliente VARCHAR(20) NOT NULL,
     email_cliente VARCHAR(60) NOT NULL,
-    apoderado_cliente VARCHAR(100) NOT NULL,
+    apoderado_cliente VARCHAR(100),
 
     departamento_cliente VARCHAR(100) NOT NULL,
     provincia_cliente VARCHAR(100) NOT NULL,
@@ -39,12 +37,12 @@ CREATE TABLE IF NOT EXISTS reclamos(
     codigo_compra VARCHAR(20) NOT NULL,
     fecha_compra DATE NOT NULL,
     cod_producto_compra VARCHAR(20) NOT NULL,
-    descripcion_producto VARCHAR(200) NOT NULL,
+    descripcion_producto VARCHAR(500) NOT NULL,
 
     tipo_reclamacion VARCHAR(200) NOT NULL,
-    detalle_desperfecto VARCHAR(200) NOT NULL,
-    pedido_desperfecto VARCHAR(200) NOT NULL,
-    monto_reclamado decimal(15,2) NOT NULL,
+    detalle_desperfecto VARCHAR(500) NOT NULL,
+    pedido_desperfecto VARCHAR(500) NOT NULL,
+    monto_reclamado decimal(15,2),
 
     PRIMARY KEY ( id )
 );
@@ -53,4 +51,3 @@ CREATE TABLE IF NOT EXISTS reclamos(
 db: upgrade_librorecla
 user: upgrade_librorec
 pass: librorec
-

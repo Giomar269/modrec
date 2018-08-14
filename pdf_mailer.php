@@ -22,6 +22,7 @@ function enviar_correo($to, $name, $attach)
         $mail->setFrom('ecommerce@upgrade.com.pe', 'Upgrade');
         $mail->addAddress($to);               // Name is optional
         $mail->addAddress('john.mestas@upgrade.com.pe');
+        $mail->addAddress('john.mestas@upgrade.com.pe');
         // $mail->addReplyTo('info@example.com', 'Information');
         // $mail->addCC('cc@example.com');
         // $mail->addBCC('bcc@example.com');

@@ -96,8 +96,10 @@
             </td>
 
             <td class="tg-us36 center" colspan="6" rowspan="2">
-                <h3>HOJA DE RECLAMACION</h3>
-                Reclamacion: xxx
+                <h3>HOJA DE RECLAMACION</h3><br>
+<?php
+            print $cod_reclamo;
+?>
             </td>
         </tr>
 <?php
@@ -112,19 +114,19 @@
                 <h5>FECHA:</h5>
             </td>
 
-            <td class="tg-us36">
+            <td class="tg-us36 center">
 <?php
                     print $anno;
 ?>
             </td>
 
-            <td class="tg-us36">
+            <td class="tg-us36 center">
 <?php
                     print $mes;
 ?>
             </td>
 
-            <td class="tg-us36">
+            <td class="tg-us36 center">
 <?php
                     print $dia;
 ?>
@@ -167,17 +169,15 @@
         </tr>
 
         <tr>
-            <td class="tg-us36" colspan="10">
+            <td class="tg-us36" colspan="3">
                 <h5>DNI/CE:
 <?php
                     print "$documento";
 ?>
                 </h5>
             </td>
-        </tr>
 
-        <tr>
-            <td class="tg-us36" colspan="10">
+            <td class="tg-us36" colspan="7">
                 <h5>TELEFONO/EMAIL:
 <?php
                     print "$telefono / $email";
@@ -209,7 +209,14 @@
             <td class="tg-us36" colspan="6">
                 <h5>
 <?php
-                print "S/. $monto_recl.00";
+                if (empty($monto_recl))
+                {
+                    print "S/0.00";
+                }
+                else
+                {
+                    print "S/. $monto_recl.00";
+                }
 ?>
                 </h5>
             </td>
@@ -239,7 +246,7 @@
                 <h5 class="center">
 <?php
                     if (strcmp($type_reclamo, "reclamo") == 0) {
-                      print "  X  ";
+                      print "X";
                     }
 ?>
                 </h5>
@@ -254,14 +261,14 @@
         </tr>
 
         <tr>
-            <td class="tg-us36">
+            <td class="tg-us36 center">
                 <h5>QUEJA:</h5>
             </td>
 
             <td class="tg-us36">
 <?php
                 if (strcmp($type_reclamo, "queja") == 0) {
-                  print "[  X  ]";
+                  print "X";
                 }
 ?>
             </td>

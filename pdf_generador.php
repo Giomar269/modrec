@@ -1,8 +1,10 @@
 <?php
     if(isset($_POST['submit']))
     {
-        function died($error) {
+        include 'pdf_save.php';
 
+        function died($error)
+        {
             echo "Lo sentimos, hay un error en sus datos y el formulario no puede ser enviado. ";
             echo "Detalle de los errores.<br/><br/>";
             echo $error."<br/><br/>";
@@ -47,13 +49,16 @@
         // Detalle de la reclamación y pedido del consumidor
         $type_reclamo        = $_POST['type_reclamo'];
         $detalle_desperfecto = wordwrap($_POST['detalle_desperfecto'], 90, "<br>", TRUE);
-        $pedido_reclamo      = wordwrap($_POST['pedido_reclamo'], 38, "<br>", TRUE);
+        $pedido_reclamo      = $_POST['pedido_reclamo'];
         $monto_recl          = $_POST['monto_recl'];
+
 
 
         $error_message = "Error";
 
-        include 'pdf_save.php';
+        insertarRegistro($tipo_doc, $documento, $nombre, $apellidos, $sexo, $telefono, $email, $apoderado, $departamento, $provincia, $distrito, $direccion, $referencia, $cod_compra, $fecha_compra, $cod_producto, $des_producto, $type_reclamo, $detalle_desperfecto, $pedido_reclamo, $monto_recl);
+
+        $cod_reclamo = getUR();
 
         include 'pdf_formato.php';
     }
