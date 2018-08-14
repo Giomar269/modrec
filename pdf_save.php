@@ -1,33 +1,4 @@
 <?php
-    // $servername = "localhost";
-    // $database = "upgrade_librorecla";
-    // $username = "upgrade_librorec";
-    // $password = "librorec";
-
-
-    // $tipo_doc = 'DNI';
-    // $documento = '47548282';
-    // $nombre = 'JOHn';
-    // $apellidos = 'Mestas';
-    // $sexo = 'F';
-    // $telefono = '475896';
-    // $email = 'dfjasdfjlas@gmail.com';
-    // $apoderado = 'juanito perez';
-    // $departamento = 'aqp';
-    // $provincia = 'aqp';
-    // $distrito = 'aqp';
-    // $direccion = 'characato';
-    // $referencia = 'a una cuadra del cruze';
-    // $cod_compra = '04000';
-    // $fecha_compra = '2018-04-08';
-    // $cod_producto = '0400';
-    // $des_producto = 'laptop';
-    // $type_reclamo = 'calienta';
-    // $detalle_desperfecto = 'cambio';
-    // $pedido_reclamo = 'camvio';
-    // $monto_recl = 2000.01;
-
-
     function conectarDb()
     {
         $servername = "localhost";
